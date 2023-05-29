@@ -15,7 +15,8 @@ export const Arrudev = {
         [
             {
                 icon: '',
-                title: '',
+                title: 'My projects',
+                href:'#',
                 submenu: [
                     {
                         name: 'Joao',
@@ -24,6 +25,11 @@ export const Arrudev = {
                         icon: ChartPieIcon,
                     }
                 ]
+            },
+            {
+                icon: '',
+                href:'#about-me',
+                title: 'About me',
             },
         ]
 
