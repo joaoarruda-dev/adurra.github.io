@@ -12,6 +12,9 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { Arrudev } from '@/config/arrudev'
 
+import Image from 'next/image';
+
+
 const callsToAction = [
     { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
     { name: 'Contact sales', href: '#', icon: PhoneIcon },
@@ -31,7 +34,7 @@ export function Header() {
                 <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Arrudev</span>
-                        <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                        <Image className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
                     </a>
                 </div>
                 <div className="flex lg:hidden">
@@ -47,7 +50,7 @@ export function Header() {
 
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
                     {
-                        configSite.menu.map(item => item.submenu?.length ? <Popover className="relative">
+                        configSite.menu.map(item => item.submenu?.length ? <Popover key={item.title} className="relative">
                             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
                                 {item.title}
                                 <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
@@ -96,7 +99,7 @@ export function Header() {
                                     </div>
                                 </Popover.Panel>
                             </Transition>
-                        </Popover> : <a href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+                        </Popover> : <a href={item.href} key={item.title} className="text-sm font-semibold leading-6 text-gray-900">
                             {item.title}
                         </a>)
                     }
@@ -113,7 +116,7 @@ export function Header() {
                     <div className="flex items-center justify-between">
                         <a href="#" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
-                            <img
+                            <Image
                                 className="h-8 w-auto"
                                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                                 alt=""
@@ -131,7 +134,7 @@ export function Header() {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                {configSite.menu.map(item => item.submenu?.length ? <Disclosure as="div" className="-mx-3">
+                                {configSite.menu.map(item => item.submenu?.length ? <Disclosure as="div" key={item.title} className="-mx-3">
                                     {({ open }) => (
                                         <>
                                             <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
